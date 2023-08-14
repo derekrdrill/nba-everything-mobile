@@ -18,6 +18,9 @@ const GET_ALL_TEAMS_API = process.env.EXPO_PUBLIC_GET_ALL_TEAMS_API;
 const GET_TEAM_SELECTED_DATA = process.env.EXPO_PUBLIC_GET_TEAM_DATA_API;
 const GET_TEAM_SELECTED_TOTALS = process.env.EXPO_PUBLIC_GET_TEAM_TOTALS_API;
 
+///////////////////////
+//     GETTERS       //
+///////////////////////
 export const getTeams = async (): Promise<NBATeam[]> => {
   const teamsOptions = {
     method: 'GET',
@@ -64,6 +67,9 @@ export const getTeamSelectedTeamTotals = async (
   return teamSelectedTotals;
 };
 
+///////////////////////
+//     SETTERS       //
+///////////////////////
 export const setIsNBAEverythingLoading = async (
   isNBAEverythingLoading: boolean,
 ): Promise<SetIsNBAEverythingLoadingParams> => ({
