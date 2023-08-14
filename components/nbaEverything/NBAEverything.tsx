@@ -12,7 +12,7 @@ import {
   setSelectedTeamData,
   setSelectedTeamTotals,
   setTeams,
-} from '../../actions/NBAEverythingActions';
+} from '../../actions/nbaEverything/NBAEverythingActions';
 
 const NBAEverything = () => {
   const {

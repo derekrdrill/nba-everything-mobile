@@ -4,6 +4,8 @@ import GlobalContext from './GlobalContext';
 import GlobalReducer from './GlobalReducer';
 import GlobalState from './GlobalState';
 
+import App from '../App';
+
 interface GlobalProviderProps {
   children: React.ReactNode;
 }
