@@ -3,23 +3,15 @@ import { View } from 'react-native';
 import { PaperSelect as Select } from 'react-native-paper-select';
 import styled from 'styled-components';
 
-import GlobalContext from '../../../context/GlobalContext';
+import GlobalContext from '../../../../context/GlobalContext';
 
-import { setTeams, setTeamSelected, setSeasonSelected } from './actions/NBAEverythingSearchActions';
+import { setSeasonSelected, setTeamSelected } from '../../../../actions/NBAEverythingActions';
 
 const NBAEverythingSearch = () => {
   const {
-    state: { nbaSeasonSelected, nbaSeasons, nbaTeams, nbaTeamSelected },
+    state: { isNBAEverythingLoading, nbaSeasonSelected, nbaSeasons, nbaTeams, nbaTeamSelected },
     dispatch,
   } = React.useContext(GlobalContext);
-
-  React.useEffect(() => {
-    const setTeamsRequest = async () => {
-      dispatch(await setTeams());
-    };
-
-    setTeamsRequest();
-  }, []);
 
   return (
     <NBAEverythingSearchRoot>
@@ -31,6 +23,7 @@ const NBAEverythingSearch = () => {
           })) ?? [{ _id: '', value: '' }]
         }
         containerStyle={{ width: '48%' }}
+        disabled={isNBAEverythingLoading}
         errorText=''
         label='Season'
         multiEnable={false}
@@ -47,6 +40,7 @@ const NBAEverythingSearch = () => {
           ]
         }
         containerStyle={{ width: '48%' }}
+        disabled={isNBAEverythingLoading}
         errorText=''
         label='Team'
         multiEnable={false}
