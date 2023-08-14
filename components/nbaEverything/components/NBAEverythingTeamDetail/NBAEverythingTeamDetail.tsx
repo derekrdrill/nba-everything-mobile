@@ -12,7 +12,6 @@ const NBA_EVERYTHING_LOGOS_LOCATION = process.env.EXPO_PUBLIC_NBA_EVERYTHING_LOG
 
 const NBAEverythingTeamDetail = () => {
   const {
-    dispatch,
     state: { nbaSeasonSelected, nbaTeamSelected, nbaTeamSelectedData, nbaTeamSelectedTotals },
   } = React.useContext(GlobalContext);
 

@@ -9,8 +9,8 @@ import { setSeasonSelected, setTeamSelected } from '../../../../actions/NBAEvery
 
 const NBAEverythingSearch = () => {
   const {
-    state: { isNBAEverythingLoading, nbaSeasonSelected, nbaSeasons, nbaTeams, nbaTeamSelected },
     dispatch,
+    state: { isNBAEverythingLoading, nbaSeasonSelected, nbaSeasons, nbaTeams, nbaTeamSelected },
   } = React.useContext(GlobalContext);
 
   return (

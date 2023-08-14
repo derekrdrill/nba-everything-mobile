@@ -65,7 +65,7 @@ const NBAEverythingTeamDetailStatsCol = styled(View)({
 });
 
 const NBAEverythingTeamDetailStatItemView = styled(View)({
-  height: 24,
+  height: 20,
 });
 
 const NBAEverythingTeamDetailText = styled(Text)<{
