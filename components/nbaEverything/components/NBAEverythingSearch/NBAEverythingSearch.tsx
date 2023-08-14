@@ -5,7 +5,10 @@ import styled from 'styled-components';
 
 import GlobalContext from '../../../../context/GlobalContext';
 
-import { setSeasonSelected, setTeamSelected } from '../../../../actions/NBAEverythingActions';
+import {
+  setSeasonSelected,
+  setTeamSelected,
+} from '../../../../actions/nbaEverything/NBAEverythingActions';
 
 const NBAEverythingSearch = () => {
   const {

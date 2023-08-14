@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-import { GlobalReducerActionEnum } from '../context/GlobalReducer';
+import { GlobalReducerActionEnum } from '../../context/GlobalReducer';
 
-import { NBATeam, NBATeamData, NBATeamTotals } from '../context/types';
+import { NBATeam, NBATeamData, NBATeamTotals } from '../../context/types';
 
 import {
   SetIsNBAEverythingLoadingParams,

@@ -12,7 +12,14 @@ const NBA_EVERYTHING_LOGOS_LOCATION = process.env.EXPO_PUBLIC_NBA_EVERYTHING_LOG
 
 const NBAEverythingTeamDetail = () => {
   const {
-    state: { nbaSeasonSelected, nbaTeamSelected, nbaTeamSelectedData, nbaTeamSelectedTotals },
+    state: {
+      isNBAEverythingDarkMode,
+      isNBAEverythingRetro,
+      nbaSeasonSelected,
+      nbaTeamSelected,
+      nbaTeamSelectedData,
+      nbaTeamSelectedTotals,
+    },
   } = React.useContext(GlobalContext);
 
   const arenaNameFormatted = `${nbaTeamSelected?.arena.name.replaceAll(' ', '+').toLowerCase()}+${
@@ -36,19 +43,31 @@ const NBAEverythingTeamDetail = () => {
     nbaTeamSelected && (
       <View>
         <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-          <NBAEverythingTeamDetailText $fontSize={24}>
+          <NBAEverythingTeamDetailText
+            $fontColor={isNBAEverythingDarkMode ? 'white' : 'black'}
+            $fontSize={24}
+          >
             {nbaTeamSelected.full_name}
           </NBAEverythingTeamDetailText>
         </View>
         <View style={{ flexDirection: 'row', height: 250, width: 300 }}>
-          <NBAEverythingTeamDetailLogo source={{ uri: logos[0].src }} />
+          <NBAEverythingTeamDetailLogo
+            source={{ uri: isNBAEverythingRetro ? logos[1].src : logos[0].src }}
+          />
         </View>
         <View>
           <View style={{ marginBottom: 8 }}>
-            <NBAEverythingTeamDetailText $fontSize={20}>Arena Info</NBAEverythingTeamDetailText>
+            <NBAEverythingTeamDetailText
+              $fontColor={isNBAEverythingDarkMode ? 'white' : 'black'}
+              $fontSize={20}
+            >
+              Arena Info
+            </NBAEverythingTeamDetailText>
           </View>
           <View>
-            <NBAEverythingTeamDetailText>{nbaTeamSelected.arena.name}</NBAEverythingTeamDetailText>
+            <NBAEverythingTeamDetailText $fontColor={isNBAEverythingDarkMode ? 'white' : 'black'}>
+              {nbaTeamSelected.arena.name}
+            </NBAEverythingTeamDetailText>
           </View>
           <NBAEverythingTeamDetailAddressView>
             <NBAEverythingTeamDetailAddressPinIcon
@@ -60,19 +79,26 @@ const NBAEverythingTeamDetail = () => {
               }
               size={15}
             />
-            <NBAEverythingTeamDetailText>
+            <NBAEverythingTeamDetailText $fontColor={isNBAEverythingDarkMode ? 'white' : 'black'}>
               {nbaTeamSelected.arena.address}
             </NBAEverythingTeamDetailText>
           </NBAEverythingTeamDetailAddressView>
           <NBAEverythingTeamDetailArenaCapacityView>
-            <NBAEverythingTeamDetailText $isBold>Capacity: </NBAEverythingTeamDetailText>
-            <NBAEverythingTeamDetailText>
+            <NBAEverythingTeamDetailText
+              $fontColor={isNBAEverythingDarkMode ? 'white' : 'black'}
+              $isBold
+            >
+              Capacity:{' '}
+            </NBAEverythingTeamDetailText>
+            <NBAEverythingTeamDetailText $fontColor={isNBAEverythingDarkMode ? 'white' : 'black'}>
               {`${(nbaTeamSelected.arena.capacity / 1000)
                 .toFixed(3)
                 .toString()
                 .replaceAll('.', ',')}`}{' '}
             </NBAEverythingTeamDetailText>
-            <NBAEverythingTeamDetailText>{` - `}</NBAEverythingTeamDetailText>
+            <NBAEverythingTeamDetailText
+              $fontColor={isNBAEverythingDarkMode ? 'white' : 'black'}
+            >{` - `}</NBAEverythingTeamDetailText>
             <NBAEverythingTeamDetailText
               $fontColor='skyblue'
               $isUnderlined

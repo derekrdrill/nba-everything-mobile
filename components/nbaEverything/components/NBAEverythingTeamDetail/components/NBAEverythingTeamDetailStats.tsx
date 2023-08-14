@@ -17,24 +17,30 @@ type NBAEverythingTeamDetailStatsProps = {
 
 const NBAEverythingTeamDetailStats = ({ teamStats }: NBAEverythingTeamDetailStatsProps) => {
   const {
-    state: { isNBAEverythingLoading, nbaSeasonSelected },
+    state: { isNBAEverythingDarkMode, isNBAEverythingLoading, nbaSeasonSelected },
   } = React.useContext(GlobalContext);
 
   return (
     <NBAEverythingTeamDetailStatsRoot>
       <NBAEverythingTeamDetailText
+        $fontColor={isNBAEverythingDarkMode ? 'white' : 'black'}
         $fontSize={20}
       >{`${nbaSeasonSelected} Stats`}</NBAEverythingTeamDetailText>
       {teamStats.map(teamStatRow => (
         <NBAEverythingTeamDetailStatsRow key={teamStatRow.statRowKey}>
           {teamStatRow.statCols.map(statCol => (
             <NBAEverythingTeamDetailStatsCol key={statCol.statColKey}>
-              <NBAEverythingTeamDetailText $fontSize={24}>
+              <NBAEverythingTeamDetailText
+                $fontColor={isNBAEverythingDarkMode ? 'white' : 'black'}
+                $fontSize={24}
+              >
                 {statCol.statColData.statTitle}
               </NBAEverythingTeamDetailText>
               <NBAEverythingTeamDetailStatItemView>
                 {!isNBAEverythingLoading ? (
-                  <NBAEverythingTeamDetailText>
+                  <NBAEverythingTeamDetailText
+                    $fontColor={isNBAEverythingDarkMode ? 'white' : 'black'}
+                  >
                     {statCol.statColData.stat}
                   </NBAEverythingTeamDetailText>
                 ) : (
@@ -70,9 +76,10 @@ const NBAEverythingTeamDetailStatItemView = styled(View)({
 
 const NBAEverythingTeamDetailText = styled(Text)<{
   $isBold?: boolean;
+  $fontColor?: string;
   $fontSize?: number;
-}>(({ $isBold, $fontSize }) => ({
-  color: 'white',
+}>(({ $isBold, $fontColor, $fontSize }) => ({
+  color: $fontColor ?? 'white',
   fontSize: $fontSize ?? 15,
   fontWeight: $isBold ? 'bold' : 'normal',
 }));
