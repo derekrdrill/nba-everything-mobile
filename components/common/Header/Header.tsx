@@ -3,8 +3,6 @@ import styled from 'styled-components';
 
 import NBALogo from '../../../assets/nba.png';
 
-// type HeaderProps = {}
-
 const Header = () => (
   <HeaderRoot>
     <HeaderLogo source={NBALogo}></HeaderLogo>

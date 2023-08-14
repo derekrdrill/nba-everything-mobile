@@ -1,14 +1,15 @@
 import { View } from 'react-native';
 import { Button } from 'react-native-paper';
 import styled from 'styled-components';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 // type FooterProps = {}
 
 const Footer = () => (
   <FooterRoot>
-    <Button mode='text'>Team Data</Button>
-    <Button mode='text'>Game Data</Button>
-    <Button mode='text'>Player Data</Button>
+    <Button mode='text'>Team Info</Button>
+    <Button mode='text'>Game Stats</Button>
+    <Button mode='text'>Player Stats</Button>
   </FooterRoot>
 );
 

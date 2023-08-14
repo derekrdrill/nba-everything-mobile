@@ -1,16 +1,21 @@
-import { NBASeason } from './types/NBASeason';
-import { NBATeam } from './types/NBATeam';
+import { NBASeason, NBATeam, NBATeamData, NBATeamTotals } from './types';
 
 export type GlobalStateType = {
+  isNBAEverythingLoading?: boolean;
   nbaSeasons?: NBASeason[];
   nbaSeasonSelected?: string;
-  nbaTeams?: NBATeam[];
+  nbaTeams?: NBATeam[] | undefined;
   nbaTeamSelected?: NBATeam;
+  nbaTeamSelectedData?: NBATeamData;
+  nbaTeamSelectedTotals?: NBATeamTotals;
 };
 
 const GlobalState: GlobalStateType = {
+  isNBAEverythingLoading: true,
   nbaTeams: [],
   nbaTeamSelected: undefined,
+  nbaTeamSelectedData: undefined,
+  nbaTeamSelectedTotals: undefined,
   nbaSeasons: [
     { year: 2000, display_year: '2000-2001' },
     { year: 2001, display_year: '2001-2002' },
