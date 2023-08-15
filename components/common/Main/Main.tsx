@@ -19,7 +19,10 @@ const App = () => {
   return (
     <PaperProvider>
       <Root $isDarkMode={isNBAEverythingDarkMode}>
-        <StatusBar backgroundColor='rgb(3, 2, 0)' style={'dark'} />
+        <StatusBar
+          backgroundColor={isNBAEverythingDarkMode ? 'rgb(3, 2, 0)' : 'white'}
+          style={isNBAEverythingDarkMode ? 'light' : 'dark'}
+        />
         <Header />
         <Body>
           <NBAEverything />

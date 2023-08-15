@@ -13,11 +13,18 @@ import {
   setSelectedTeamTotals,
   setTeams,
 } from '../../actions/nbaEverything/NBAEverythingActions';
+import NBAEverythingGameScores from './components/NBAEverythingGameScores/NBAEverythingGameScores';
 
 const NBAEverything = () => {
   const {
     dispatch,
-    state: { isNBAEverythingLoading, nbaSeasonSelected, nbaTeamSelected },
+    state: {
+      isNBAEverythingDarkMode,
+      isNBAEverythingLoading,
+      nbaEverythingView,
+      nbaSeasonSelected,
+      nbaTeamSelected,
+    },
   } = React.useContext(GlobalContext);
 
   React.useEffect(() => {
@@ -52,12 +59,17 @@ const NBAEverything = () => {
     <View>
       {isNBAEverythingLoading && (
         <NBAEverythingLoaderView>
-          <ActivityIndicator animating color={'white'} size={150} />
+          <ActivityIndicator
+            animating
+            color={isNBAEverythingDarkMode ? 'white' : 'grey'}
+            size={150}
+          />
         </NBAEverythingLoaderView>
       )}
       <View style={{ opacity: isNBAEverythingLoading ? 0.2 : 1 }}>
         <NBAEverythingSearch />
-        <NBAEverythingTeamDetail />
+        {nbaEverythingView === 'team' && <NBAEverythingTeamDetail />}
+        {nbaEverythingView === 'game' && <NBAEverythingGameScores />}
       </View>
     </View>
   );
