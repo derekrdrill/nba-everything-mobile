@@ -26,4 +26,5 @@ This mobile app is buit with the following technologies:
   <li>React Context</li>
   <li>React Paper Native</li>
   <li>Styled-Components</li>
+  <li>Axios</li>
 </ul>
