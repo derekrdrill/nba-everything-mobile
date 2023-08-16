@@ -5,7 +5,11 @@ import styled from 'styled-components';
 
 import GlobalContext from '../../context/GlobalContext';
 
-import { NBAEverythingSearch, NBAEverythingTeamDetail } from './components';
+import {
+  NBAEverythingGameScores,
+  NBAEverythingSearch,
+  NBAEverythingTeamDetail,
+} from './components';
 
 import {
   setIsNBAEverythingLoading,
@@ -13,7 +17,6 @@ import {
   setSelectedTeamTotals,
   setTeams,
 } from '../../actions/nbaEverything/NBAEverythingActions';
-import NBAEverythingGameScores from './components/NBAEverythingGameScores/NBAEverythingGameScores';
 
 const NBAEverything = () => {
   const {

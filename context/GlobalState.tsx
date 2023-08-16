@@ -1,9 +1,11 @@
 import { NBASeason, NBATeam, NBATeamData, NBATeamTotals } from './types';
+import { NBAGameDetail } from './types/NBAGameDetail';
 
 export type GlobalStateType = {
   isNBAEverythingDarkMode?: boolean;
   isNBAEverythingLoading?: boolean;
   isNBAEverythingRetro?: boolean;
+  nbaGameDetails?: NBAGameDetail[];
   nbaEverythingView?: 'team' | 'game' | 'player';
   nbaSeasons?: NBASeason[];
   nbaSeasonSelected?: string;
@@ -17,6 +19,7 @@ const GlobalState: GlobalStateType = {
   isNBAEverythingDarkMode: true,
   isNBAEverythingLoading: true,
   isNBAEverythingRetro: false,
+  nbaGameDetails: undefined,
   nbaEverythingView: 'team',
   nbaTeams: [],
   nbaTeamSelected: undefined,
