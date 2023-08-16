@@ -7,8 +7,14 @@ import GlobalContext from '../../../../context/GlobalContext';
 const BACKEND_URL = process.env.EXPO_PUBLIC_BACKEND_URL;
 const NBA_EVERYTHING_LOGOS_LOCATION = process.env.EXPO_PUBLIC_NBA_EVERYTHING_LOGOS_LOCATION;
 
+import {
+  setGameDetails,
+  setIsNBAEverythingLoading,
+} from '../../../../actions/nbaEverything/NBAEverythingActions';
+
 const NBAEverythingGameScores = () => {
   const {
+    dispatch,
     state: { isNBAEverythingDarkMode, isNBAEverythingRetro, nbaTeamSelectedData, nbaTeamSelected },
   } = React.useContext(GlobalContext);
 
@@ -70,7 +76,16 @@ const NBAEverythingGameScores = () => {
           </NBAeverythingGameScoreRow>
           <View style={{ flexDirection: 'row', justifyContent: 'space-around', padding: 10 }}>
             <Text style={{ color: isNBAEverythingDarkMode ? 'white' : 'black' }}>Final</Text>
-            <Text style={{ color: 'royalblue', textDecorationLine: 'underline' }}>Game Detail</Text>
+            <Text
+              onPress={async () => {
+                dispatch(await setIsNBAEverythingLoading(true));
+                dispatch(await setGameDetails(game.id));
+                dispatch(await setIsNBAEverythingLoading(false));
+              }}
+              style={{ color: 'royalblue', textDecorationLine: 'underline' }}
+            >
+              Game Detail
+            </Text>
           </View>
         </NBAEverythingGameScoreView>
       ))}

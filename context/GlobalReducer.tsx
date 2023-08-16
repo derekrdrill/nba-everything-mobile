@@ -4,6 +4,7 @@ export enum GlobalReducerActionEnum {
   SET_IS_NBA_EVERYTHING_LOADING = 'SET_IS_NBA_EVERYTHING_LOADING',
   SET_IS_NBA_EVERYTHING_RETRO = 'SET_IS_NBA_EVERYTHING_RETRO',
   SET_IS_NBA_EVERYTHING_DARK_MODE = 'SET_IS_NBA_EVERYTHING_DARK_MODE',
+  SET_NBA_GAME_DETAILS = 'SET_NBA_GAME_DETAIL',
   SET_NBA_EVERYTHING_VIEW = 'SET_NBA_EVERYTHING_VIEW',
   SET_NBA_TEAMS = 'SET_NBA_TEAMS',
   SET_NBA_TEAM_SELECTED = 'SET_NBA_TEAM_SELECTED',
@@ -23,6 +24,7 @@ const GlobalReducer = (state: GlobalStateType, action: GlobalReducerAction) => {
       isNBAEverythingDarkMode,
       isNBAEverythingLoading,
       isNBAEverythingRetro,
+      nbaGameDetails,
       nbaEverythingView,
       nbaSeasonSelected,
       nbaTeams,
@@ -48,6 +50,11 @@ const GlobalReducer = (state: GlobalStateType, action: GlobalReducerAction) => {
       return {
         ...state,
         isNBAEverythingRetro: isNBAEverythingRetro,
+      };
+    case GlobalReducerActionEnum.SET_NBA_GAME_DETAILS:
+      return {
+        ...state,
+        nbaGameDetails: nbaGameDetails,
       };
     case GlobalReducerActionEnum.SET_NBA_EVERYTHING_VIEW:
       return {

@@ -28,6 +28,7 @@ const Footer = () => {
               ? 'rgb(3, 2, 0)'
               : 'white',
           borderRadius: 0,
+          height: '100%',
         }}
       >
         Team Info
@@ -45,6 +46,7 @@ const Footer = () => {
               ? 'rgb(3, 2, 0)'
               : 'white',
           borderRadius: 0,
+          height: '100%',
         }}
       >
         Game Scores
@@ -62,6 +64,7 @@ const Footer = () => {
               ? 'rgb(3, 2, 0)'
               : 'white',
           borderRadius: 0,
+          height: '100%',
         }}
       >
         Player Stats

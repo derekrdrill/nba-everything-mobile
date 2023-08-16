@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import { GlobalReducerActionEnum } from '../../context/GlobalReducer';
 
-import { NBATeam, NBATeamData, NBATeamTotals } from '../../context/types';
+import { NBAGameDetail, NBATeam, NBATeamData, NBATeamTotals } from '../../context/types';
 
 import {
   SetIsNBAEverythingLoadingParams,
@@ -11,16 +11,30 @@ import {
   SetNBATeamSelectedParams,
   SetNBATeamSelectedDataParams,
   SetNBATeamSelectedTotalsParams,
+  SetNBAGameDetailsParams,
 } from './types';
 
 const BACKEND_URL = process.env.EXPO_PUBLIC_BACKEND_URL;
 const GET_ALL_TEAMS_API = process.env.EXPO_PUBLIC_GET_ALL_TEAMS_API;
 const GET_TEAM_SELECTED_DATA = process.env.EXPO_PUBLIC_GET_TEAM_DATA_API;
 const GET_TEAM_SELECTED_TOTALS = process.env.EXPO_PUBLIC_GET_TEAM_TOTALS_API;
+const GET_GAME_DETAIL = process.env.EXPO_PUBLIC_GET_GAME_DETAIL_DATA_API;
 
 ///////////////////////
 //     GETTERS       //
 ///////////////////////
+export const getGameDetails = async (gameID: number | undefined): Promise<NBAGameDetail[]> => {
+  const gameDetailOptions = {
+    method: 'GET',
+    url: `${BACKEND_URL}/${GET_GAME_DETAIL}/${gameID}`,
+  };
+
+  const gameDetailRequest = await axios.request(gameDetailOptions).then(async response => response);
+  const gameDetail = await gameDetailRequest.data;
+
+  return gameDetail;
+};
+
 export const getTeams = async (): Promise<NBATeam[]> => {
   const teamsOptions = {
     method: 'GET',
@@ -45,6 +59,7 @@ export const getTeamSelectedData = async (
   const teamSelectedDataRequest = await axios
     .request(teamSelectedDataOptions)
     .then(async response => response);
+
   const teamSelectedData = await teamSelectedDataRequest.data;
 
   return teamSelectedData;
@@ -62,6 +77,7 @@ export const getTeamSelectedTeamTotals = async (
   const teamSelectedTotalsRequest = await axios
     .request(teamSelectedTotalsOptions)
     .then(async response => response);
+
   const teamSelectedTotals = await teamSelectedTotalsRequest.data;
 
   return teamSelectedTotals;
@@ -70,6 +86,13 @@ export const getTeamSelectedTeamTotals = async (
 ///////////////////////
 //     SETTERS       //
 ///////////////////////
+export const setGameDetails = async (
+  gameID: number | undefined,
+): Promise<SetNBAGameDetailsParams> => ({
+  type: GlobalReducerActionEnum.SET_NBA_GAME_DETAILS,
+  payload: { nbaGameDetails: await getGameDetails(gameID) },
+});
+
 export const setIsNBAEverythingLoading = async (
   isNBAEverythingLoading: boolean,
 ): Promise<SetIsNBAEverythingLoadingParams> => ({
